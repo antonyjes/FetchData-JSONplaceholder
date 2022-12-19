@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useState } from "react";
+import '../styles/ShowData.css';
 
 function ShowData(){
     const API_URL = 'https://jsonplaceholder.typicode.com';
@@ -32,10 +33,10 @@ function ShowData(){
     return(
         <div>
             <nav>
-                <ul>
-                    <li><button onClick={()=>setTypeData('users')}>users</button></li>
-                    <li><button onClick={()=>setTypeData('posts')}>posts</button></li>
-                    <li><button onClick={()=>setTypeData('comments')}>comments</button></li>
+                <ul className="barra-nav">
+                    <li><button onClick={()=>setTypeData('users')} className={`${type === 'users' ? 'selected' : ''}`}>users</button></li>
+                    <li><button onClick={()=>setTypeData('posts')} className={`${type === 'posts' ? 'selected' : ''}`}>posts</button></li>
+                    <li><button onClick={()=>setTypeData('comments')} className={`${type === 'comments' ? 'selected' : ''}`}>comments</button></li>
                 </ul>
             </nav>
             {
@@ -43,7 +44,7 @@ function ShowData(){
             }
             {
                 !isloading && (
-                    <ul>
+                    <ul className="list-items">
                         {
                             items.map((item)=>(
                                 <li key={item.id}>{JSON.stringify(item)}</li>
